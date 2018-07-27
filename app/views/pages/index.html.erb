@@ -1,2 +1,8 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1>Tweet Explorer</h1>
+
+<% if current_user %>
+  <%= link_to 'Fetch Tweets', '/fetch', class: 'btn btn-primary' %>
+  <%= link_to 'Sign Out', '/logout', class: 'btn btn-danger', method: 'delete' %>
+<% else %>
+  <%= link_to 'Sign in via Twitter', '/auth/twitter', class: 'btn btn-primary' %>
+<% end %>
