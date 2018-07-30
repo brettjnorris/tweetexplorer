@@ -3,11 +3,7 @@ class PagesController < ApplicationController
   end
   
   def fetch
-    if current_user
-      current_user.recent_tweets.each do |tweet|
-        activity = Activity.record_tweet(tweet)
-      end
-    end
+    RecordTweetsJob.perform_later(current_user.id) if current_user
 
     redirect_to root_path 
   end
