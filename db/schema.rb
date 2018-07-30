@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_27_033320) do
+ActiveRecord::Schema.define(version: 2018_07_27_051633) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "author_id"
+    t.string "author_name"
+    t.string "message"
+    t.string "message_id"
+    t.string "provider"
+    t.string "type"
+    t.string "link"
+    t.boolean "sent"
+    t.float "posted_at"
+    t.float "created_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider"
