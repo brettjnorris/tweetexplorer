@@ -1,11 +1,11 @@
 class Activity < ApplicationRecord
   def self.record_tweet(tweet)
-    status_url = "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id_str}"
+    status_url = "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.id}"
 
     activity = Activity.find_or_initialize_by({ 
       provider: "Twitter",
-      type: "tweet",
-      message_id: tweet.id_str,
+      object_type: "tweet",
+      message_id: tweet.id.to_s,
     })
 
     return if activity.persisted?
@@ -14,7 +14,7 @@ class Activity < ApplicationRecord
     activity.author_name = tweet.user.screen_name
     activity.message = tweet.text
     activity.link = status_url
-    activity.sent = !tweet.retweeted and !tweet.favorited
+    activity.sent = !tweet.retweet? and !tweet.favorited?
     activity.posted_at = tweet.created_at
     activity.created_at = Time.now
 
