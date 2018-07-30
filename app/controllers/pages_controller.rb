@@ -3,7 +3,11 @@ class PagesController < ApplicationController
   end
   
   def fetch
-    RecordTweetsJob.perform_later(current_user.id) if current_user
+    if current_user
+      RecordTweetsJob.perform_later(current_user.id)
+      flash[:notice] = "Fetching tweets in the background"
+    end
+    
 
     redirect_to root_path 
   end

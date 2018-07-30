@@ -1,5 +1,9 @@
 <h1>Tweet Explorer</h1>
 
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <% if current_user %>
   <%= link_to 'Fetch Tweets', '/fetch', class: 'btn btn-primary' %>
   <%= link_to 'Sign Out', '/logout', class: 'btn btn-danger', method: 'delete' %>
