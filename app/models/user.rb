@@ -9,4 +9,8 @@ class User < ApplicationRecord
     )
     user
   end
+
+  def recent_tweets
+    TwitterClient.user_timeline_since(uid)
+  end
 end
