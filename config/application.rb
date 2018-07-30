@@ -17,5 +17,7 @@ module Tweetexplorer
     # the framework and any gems in your application.
 
     config.autoload_paths += %W( lib/ )
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
