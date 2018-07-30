@@ -18,6 +18,8 @@ class Activity < ApplicationRecord
     activity.posted_at = tweet.created_at
     activity.created_at = Time.now
 
+    activity.source_json = tweet.to_h
+
     activity.save
   end
 end
