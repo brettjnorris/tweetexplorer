@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_27_051633) do
+ActiveRecord::Schema.define(version: 2018_07_30_043440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_07_27_051633) do
     t.string "message"
     t.string "message_id"
     t.string "provider"
-    t.string "type"
+    t.string "object_type"
     t.string "link"
     t.boolean "sent"
     t.float "posted_at"
